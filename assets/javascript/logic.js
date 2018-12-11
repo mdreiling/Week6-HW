@@ -56,8 +56,6 @@ function displayNameGifs() {
 
 }
 
-
-
 // Page Processes ===============================================================
 
 // Function to wait to run anything until page loads.
@@ -65,6 +63,21 @@ $(document).ready(function(){
 
     // Applying listener for all nameButton.
     $(document).on("click", ".nameButton", displayNameGifs);
+
+    // Click listene function to add movies from user input after add name is pushed.
+    $("#addName").on("click", function(event) {
+        event.preventDefault();
+
+        // Creates a variable from the submitted text.
+        var nameQ = $("#nameInput").val();
+
+        // Pushes the name into the name array.
+        namesLOTR.push(nameQ);
+        console.log(namesLOTR);
+
+        buttonsWrite();
+    })
+
 
     // Writing initial buttons
     buttonsWrite();
