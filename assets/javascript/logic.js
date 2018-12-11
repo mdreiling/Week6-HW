@@ -1,6 +1,6 @@
 
 // Initial array of names.
-var namesLOTR = ["Samwise Gamgee", "Frode Baggins", "Gandalf"] 
+var namesLOTR = ["Samwise Gamgee", "Frodo Baggins", "Gandalf"] 
 
 
 // Functions ===============================================================
@@ -35,10 +35,10 @@ function buttonsWrite() {
 
 }
 
-// Function to read and retrieve giphy gifs
+// Function to read and retrieve giphy gifs.
 function displayNameGifs() {
     
-    // Setting movie and query variables
+    // Setting movie and query variables.
     var nameA = $(this).attr("data-name");
     console.log(nameA);
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + nameA + "&api_key=32ehJXIzBZLqTLngAlqIck2lcEK2d6Nq&limit=10";
@@ -49,10 +49,33 @@ function displayNameGifs() {
         method: "GET"
     }).then(function(response) {
         console.log(response);
+
+        // Setting response data as a variable.
+        var results = response.data;
+
+        // For loop to create each gif.
+        for (j = 0; j < results.length; j++) {
+            
+            // Creating a div to hold each these 10 gifs.
+            var resultsDiv = $("<div>");
+
+            // Creating a paragraph element to hold the rating.
+            var pR = $("<p>").text("Rating: " + results[j].rating);
+
+            // Creating an image element to hold each gif and adding its url to the src.
+            var resultsGif = $("<img>");
+            resultsGif.attr("src", results[j].images.fixed_height.url);
+
+            // Prepending rating and results gif to each gif div
+            resultsDiv.prepend(pR);
+            resultsDiv.prepend(resultsGif);
+
+            // Prepending to existing div.
+            $("#giphyPlacementArea").prepend(resultsDiv);
+
+        }
+
     });
-
-    // NEED TO WRITE GIFS IN THIS FUNCTION +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 
 }
 
