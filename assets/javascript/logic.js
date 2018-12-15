@@ -1,6 +1,6 @@
 
 // Initial array of names.
-var namesLOTR = ["Samwise Gamgee", "Frodo Baggins", "Gandalf"] 
+var namesLOTR = ["Samwise Gamgee", "Frodo Baggins", "Gandalf"] ;
 
 
 // Functions ===============================================================
@@ -62,9 +62,13 @@ function displayNameGifs() {
             // Creating a paragraph element to hold the rating.
             var pR = $("<p>").text("Rating: " + results[j].rating);
 
-            // Creating an image element to hold each gif and adding its url to the src.
+            // Creating an image element to hold each gif, then apply still and animated attributes, and applying still gif to image.
             var resultsGif = $("<img>");
-            resultsGif.attr("src", results[j].images.fixed_height.url);
+            resultsGif.attr("data-still", results[j].images.fixed_height_still.url);
+            resultsGif.attr("data-animated", results[j].images.fixed_height.url);
+            resultsGif.attr("data-state", "still");
+            resultsGif.attr("src", results[j].images.fixed_height_still.url);
+            resultsGif.addClass("gif");
 
             // Prepending rating and results gif to each gif div
             resultsDiv.prepend(pR);
@@ -100,6 +104,23 @@ $(document).ready(function(){
 
         buttonsWrite();
     })
+
+    // Play/Pause click listener.
+    $(document).on("click", ".gif", function() {
+        
+        var state = $(this).attr("data-state");
+
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animated"));
+            $(this).attr("data-state", "animated")
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still")
+        }
+
+
+
+    });
 
 
     // Writing initial buttons
