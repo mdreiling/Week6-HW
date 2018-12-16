@@ -75,7 +75,7 @@ function displayNameGifs() {
 
             // Prepending rating and results gif to each gif div
             resultsDiv.append(pR);
-            resultsDiv.append(resultsGif);
+            resultsDiv.prepend(resultsGif);
 
             // Prepending to existing div.
             $("#giphyPlacementArea").prepend(resultsDiv);
