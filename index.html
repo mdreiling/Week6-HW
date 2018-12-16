@@ -12,9 +12,10 @@
 </head>
 <body>
     
-    <img id="treeOfGondor" src="assets/images/WhiteTreeGondor.png">
+    <img id="treeOfGondor" class="rounded mx-auto d-block" src="assets/images/WhiteTreeGondor.png">
 
-    <div id="userArea" class="container">
+    <div id="userArea" class="container border border-white rounded">
+        <img src="assets/images/LOTRGGTitleImage.png" class="img-fluid">
 
         <!-- Buttons and Search form will be in this div -->
         <div id="userInputArea">
@@ -24,19 +25,17 @@
 
             </div>
 
-            <!-- Search form goes here -->
-            <form id="userEntryForm">
-                <label for="nameInput">Add a new character!</label>
-                <input type="text" id="nameInput"><br>
-            
-                <!-- Button triggers new names to be added -->
-                <input id="addName" type="submit" value="Add character">
-            </form>
+            <div class="input-group mb-3" id="userEntryForm">
+                <input type="text" id="nameInput" class="form-control" placeholder="Add a new character!" aria-label="Add a new character!" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" value="Add character">Add character</button>
+                </div>
+            </div>
 
         </div>
         
         <!-- Gifs go here -->
-        <div id="giphyPlacementArea">
+        <div class="card-columns" id="giphyPlacementArea">
 
         </div>
 

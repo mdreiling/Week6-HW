@@ -1,5 +1,14 @@
 body {
-    background-color: black;
-    color: white;
+    background-color: #12143d;;
+    color: #ffffff;
+    padding: 10px;
 }
 
+#userArea {
+    margin-top: -9px;
+}
+
+.nameButton {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}

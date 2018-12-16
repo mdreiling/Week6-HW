@@ -18,7 +18,7 @@ function buttonsWrite() {
         var nameB = $("<button>");
 
         // Adding a class to the button.
-        nameB.addClass("nameButton")
+        nameB.addClass("nameButton btn btn-light")
 
         // Adding attributes to the button.
         nameB.attr("data-name", namesLOTR[i]);
@@ -56,23 +56,26 @@ function displayNameGifs() {
         // For loop to create each gif.
         for (j = 0; j < results.length; j++) {
             
-            // Creating a div to hold each these 10 gifs.
+            // Creating a card to hold each these 10 gifs.
             var resultsDiv = $("<div>");
+            resultsDiv.addClass("card");
 
             // Creating a paragraph element to hold the rating.
-            var pR = $("<p>").text("Rating: " + results[j].rating);
+            var pR = $("<p>")
+            pR.attr("card-text");
+            pR.text("Rating: " + results[j].rating);
 
             // Creating an image element to hold each gif, then apply still and animated attributes, and applying still gif to image.
             var resultsGif = $("<img>");
-            resultsGif.attr("data-still", results[j].images.fixed_height_still.url);
-            resultsGif.attr("data-animated", results[j].images.fixed_height.url);
+            resultsGif.attr("data-still", results[j].images.fixed_width_still.url);
+            resultsGif.attr("data-animated", results[j].images.fixed_width.url);
             resultsGif.attr("data-state", "still");
-            resultsGif.attr("src", results[j].images.fixed_height_still.url);
-            resultsGif.addClass("gif");
+            resultsGif.attr("src", results[j].images.fixed_width_still.url);
+            resultsGif.addClass("card-img-top gif");
 
             // Prepending rating and results gif to each gif div
-            resultsDiv.prepend(pR);
-            resultsDiv.prepend(resultsGif);
+            resultsDiv.append(pR);
+            resultsDiv.append(resultsGif);
 
             // Prepending to existing div.
             $("#giphyPlacementArea").prepend(resultsDiv);
@@ -92,8 +95,9 @@ $(document).ready(function(){
     $(document).on("click", ".nameButton", displayNameGifs);
 
     // Click listene function to add movies from user input after add name is pushed.
-    $("#addName").on("click", function(event) {
+    $(document).on("click", "#button-addon2", function(event) {
         event.preventDefault();
+        console.log("addName Button was clicked");
 
         // Creates a variable from the submitted text.
         var nameQ = $("#nameInput").val();
@@ -118,10 +122,7 @@ $(document).ready(function(){
             $(this).attr("data-state", "still")
         }
 
-
-
     });
-
 
     // Writing initial buttons
     buttonsWrite();
