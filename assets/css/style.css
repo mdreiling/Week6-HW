@@ -25,3 +25,11 @@ p {
     margin-bottom: 10px;
     background-color: #ffffff;
 }
+
+#giphyPlacementArea {
+    margin-bottom: 5px;
+}
+
+.ratingSpan {
+    text-transform: uppercase;
+}

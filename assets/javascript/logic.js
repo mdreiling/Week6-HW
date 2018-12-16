@@ -63,7 +63,7 @@ function displayNameGifs() {
             // Creating a paragraph element to hold the rating.
             var pR = $("<p>")
             pR.attr("card-text");
-            pR.text("Rating: " + results[j].rating);
+            pR.html("Rating: <span class='ratingSpan'>" + results[j].rating + "</span>");
 
             // Creating an image element to hold each gif, then apply still and animated attributes, and applying still gif to image.
             var resultsGif = $("<img>");
@@ -79,6 +79,7 @@ function displayNameGifs() {
 
             // Prepending to existing div.
             $("#giphyPlacementArea").prepend(resultsDiv);
+            $("#giphyPlacementArea").append("<br>");
 
         }
 
